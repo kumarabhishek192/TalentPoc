@@ -1,12 +1,14 @@
 package com.streams.poc.service;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 import com.streams.poc.fileController.FileLookup;
 import com.google.gson.Gson;
 import com.streams.poc.dataModal.DataModal;
+import com.streams.poc.dataModal.DataObject;
+import com.streams.poc.dataModal.NotFoundModal;
 
 @Service
 public class FileService {
@@ -26,22 +30,23 @@ public class FileService {
 	HashMap<String,Path> fileMap;
 	
 	HashMap<String, List<DataModal>> dataModal;
-	
-	//Set up fileMap and dataModal
+
 	public void serviceSetup() {
 		setFileMap();
 		setDataModal();
 	}
 	
+	//fileMap initializing
 	private void setFileMap() {
 		FileLookup fileLookup = new FileLookup();
 		this.fileMap = fileLookup.getFileMap();
 	}
 	
+	//dataModal initializing
 	private void setDataModal() {
 		FileLookup fileLookup = new FileLookup();
 		this.dataModal = new HashMap<>();
-		String[] filePath = this.getAllFileArray();
+		List<String> filePath = this.getAllFile();
 		for(String path:filePath) {
 			dataModal.put(path,new ArrayList<DataModal>());
 		}
@@ -55,33 +60,21 @@ public class FileService {
 		}
 	}
 	
-	public String getAllFile() {
-		String result = new String();
+	public ArrayList<String> getAllFile() {
+		ArrayList<String> fileList = new ArrayList<>();
 		for(Map.Entry<String, Path> entry: fileLookup.getFileMap().entrySet()) {
-			result += entry.getKey() + "<br>";
+			fileList.add(entry.getKey());
 		}
-		return result;
+		return fileList;
 	}
 	
-	public String[] getAllFileArray() {
-		FileLookup fileLookup = new FileLookup();
-		HashMap<String,Path> fileMap = fileLookup.getFileMap();
-		String[] array = new String[fileMap.size()];
-		int counter = 0;
-		for(Map.Entry<String, Path> entry: fileMap.entrySet()) {
-			array[counter++] = entry.getKey();
-		}
-		return array;
-	}
-	
-	
-	public String getFileData(String file) {
+	public ArrayList<String> getFileData(String file) {
 		file += ".csv";
-		String result = new String();
+		ArrayList<String> result = new ArrayList<String>();
 		try(Stream<String> lines = Files.lines(fileLookup.getFileMap().get(file))){
 			String[] line = lines.skip(1).toArray(String[]::new);
 			for(String str:line) {
-				result += str + "<br>";
+				result.add(str);
 			}
 		}catch(Exception e) {
 			System.out.println(e.getLocalizedMessage());
@@ -89,35 +82,54 @@ public class FileService {
 		return result;
 	}
 	
-	public String getAllData(){
-		String result = new String();
-		for(Map.Entry<String,List<DataModal>> entry: this.dataModal.entrySet()) {
-			result += entry.getKey() + "<br>";
-			Optional<String> optional = entry.getValue().stream().map(l -> l.toString() + "<br>").reduce((str1,str2) -> str1 + str2);
-			if(optional.isPresent()) {
-				result += optional.get();
-			}
-			result += "<br>";
-		}
-		return result;
+	public HashMap<String,List<DataModal>> getAllData(){
+		serviceSetup();
+		return this.dataModal;
 		
 	}
 	
-	public String dataToJson() {
-		Gson gson = new Gson();
+	public DataObject getDataByFirstName(String file,String firstName) {
 		serviceSetup();
-		String json = gson.toJson(this.dataModal);
-		return json;
+		try {
+			return  this.dataModal.get(file).stream().filter(x -> x.getFirstName().equals(firstName)).findAny().get();
+		}catch(Exception e) {
+			DataObject obj = new NotFoundModal();
+			return obj;
+		}
+	}
+	public DataObject getDataByLastName(String file,String firstName) {
+		serviceSetup();
+		try {
+			return  this.dataModal.get(file).stream().filter(x -> x.getLastName().equals(firstName)).findAny().get();
+		}catch(Exception e) {
+			DataObject obj = new NotFoundModal();
+			return obj;
+		}
+	}
+	public DataObject getDataByPost(String file,String firstName) {
+		serviceSetup();
+		try {
+			return  this.dataModal.get(file).stream().filter(x -> x.getPost().equals(firstName)).findAny().get();
+		}catch(Exception e) {
+			DataObject obj = new NotFoundModal();
+			return obj;
+		}
 	}
 	
-//	public String getPersonalDetails(String file, String pathId) {
-//		serviceSetup();
-//		file += ".csv";
-//		String result = new String();
-//		List<DataModal> lines = this.dataModal.get(file);
-//		lines.stream().
-//		return result;
-//	}
-	
+	public void addPersonToFile(String data,String file) {
+		serviceSetup();
+		Gson gson = new Gson();
+		file += ".csv";
+		DataModal obj = gson.fromJson(data, DataModal.class);
+		try { 
+            BufferedWriter out = new BufferedWriter( 
+                   new FileWriter(this.fileMap.get(file).toString(), true)); 
+            out.write(obj.toCSV()); 
+            out.close(); 
+        } 
+        catch (IOException e) { 
+            System.out.println("exception occoured" + e); 
+        } 
+	}
 	
 }

@@ -6,14 +6,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class FileLookup {
+public class FileLookup{
 
 	HashMap<String, Path> fileMap = new HashMap<>();
 

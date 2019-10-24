@@ -1,6 +1,6 @@
 package com.streams.poc.dataModal;
 
-public class DataModal {
+public class DataModal extends DataObject {
 
 	String firstName;
 	
@@ -127,9 +127,19 @@ public class DataModal {
 		this.web = web;
 	}
 	
+	public String toCSV() {
+		return "\"" + this.firstName + "\",\"" + this.lastName + "\",\"" + this.companyName + "\",\""
+				+ this.address + "\",\"" + this.city + "\",\"" + this.state + 
+				"\",\"" + this.post + "\",\"" + this.phone1 + "\",\"" + this.phone2 + "\",\"" + this.email
+				+ "\",\"" + this.web + "\"\n";
+	}
+	
 	@Override
 	public String toString() {
-		return "Object create of Name : " + this.firstName + " " + this.lastName;
+		String res = new String();
+		res = "Name : " + this.firstName + " " + this.lastName;
+		res += "  Company : " + this.companyName + " Post: " + this.post;
+		return res;
 	}
 
 }
