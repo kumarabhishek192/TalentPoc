@@ -1,0 +1,36 @@
+2019-10-30 12:35:04.192  INFO 7736 --- [main] com.streams.poc.PocApplication           : Starting PocApplication on abhishekk-desk with PID 7736 (C:\Users\abhishekk\Documents\workspace-sts-3.9.10.RELEASE\poc\target\classes started by AbhishekK in C:\Users\abhishekk\Documents\workspace-sts-3.9.10.RELEASE\poc)
+2019-10-30 12:35:04.194  INFO 7736 --- [main] com.streams.poc.PocApplication           : No active profile set, falling back to default profiles: default
+2019-10-30 12:35:04.916  INFO 7736 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-10-30 12:35:04.922  INFO 7736 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-30 12:35:04.922  INFO 7736 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-10-30 12:35:04.971  INFO 7736 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-30 12:35:04.971  INFO 7736 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 744 ms
+2019-10-30 12:35:05.177  INFO 7736 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-10-30 12:35:05.220  INFO 7736 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-30 12:35:05.308  INFO 7736 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-10-30 12:35:05.318  INFO 7736 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-10-30 12:35:05.333  INFO 7736 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-10-30 12:35:05.436  INFO 7736 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-10-30 12:35:05.439  INFO 7736 --- [main] com.streams.poc.PocApplication           : Started PocApplication in 1.466 seconds (JVM running for 2.727)
+2019-10-30 12:35:25.012  INFO 7736 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-10-30 12:35:25.015  INFO 7736 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-30 12:35:40.259  INFO 9172 --- [main] com.streams.poc.PocApplication           : Starting PocApplication on abhishekk-desk with PID 9172 (C:\Users\abhishekk\Documents\workspace-sts-3.9.10.RELEASE\poc\target\classes started by AbhishekK in C:\Users\abhishekk\Documents\workspace-sts-3.9.10.RELEASE\poc)
+2019-10-30 12:35:40.261  INFO 9172 --- [main] com.streams.poc.PocApplication           : No active profile set, falling back to default profiles: default
+2019-10-30 12:35:40.917  INFO 9172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-10-30 12:35:40.922  INFO 9172 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-30 12:35:40.923  INFO 9172 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-10-30 12:35:40.967  INFO 9172 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-30 12:35:40.967  INFO 9172 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 679 ms
+2019-10-30 12:35:41.168  INFO 9172 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-10-30 12:35:41.212  INFO 9172 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-30 12:35:41.297  INFO 9172 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-10-30 12:35:41.308  INFO 9172 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-10-30 12:35:41.325  INFO 9172 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-10-30 12:35:41.429  INFO 9172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-10-30 12:35:41.431  INFO 9172 --- [main] com.streams.poc.PocApplication           : Started PocApplication in 1.361 seconds (JVM running for 1.708)
+2019-10-30 12:36:06.372  INFO 9172 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-30 12:36:06.373  INFO 9172 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-30 12:36:06.378  INFO 9172 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2019-10-30 12:36:35.286  INFO 9172 --- [http-nio-8081-exec-2] c.streams.poc.controller.FileController  : getting all file values
+2019-10-30 12:36:54.837  INFO 9172 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-10-30 12:36:54.852  INFO 9172 --- [RMI TCP Connection(5)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
